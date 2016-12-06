@@ -22,14 +22,14 @@ public class Escape extends ApplicationAdapter {
 
 	@Override
 	public void create () {
+		BG = Gdx.audio.newMusic(Gdx.files.internal("bg.mp3"));
+		BG.setLooping(true);
+		BG.play();
 		font = new BitmapFont(Gdx.files.internal("text.fnt"));
 		batch = new SpriteBatch();
 		gsm = new GameStateManager();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		gsm.push(new MenuState(gsm));
-		BG = Gdx.audio.newMusic(Gdx.files.internal("bg.mp3"));
-		BG.setLooping(true);
-		BG.play();
 		prefs = Gdx.app.getPreferences("highPREF");
 		if (!prefs.contains("HIGHSCORE")) {
 			prefs.putInteger("HIGHSCORE", 0);
